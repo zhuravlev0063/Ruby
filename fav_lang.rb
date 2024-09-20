@@ -20,16 +20,20 @@ begin
 puts "Пожалуйста введите команду на языке Ruby"
 ruby_command= STDIN.gets.chomp
 # Выполняем команду Ruby
-res=eval(ruby_command)
-puts "Результат выполнения команды Ruby: #{res}"
+res_ruby=eval(ruby_command)
+puts "Результат выполнения команды Ruby: #{res_ruby}"
 rescue NameError
-   puts "Ошибка! такой команды нет"
+   puts "Ошибка, такой команды нет"
 rescue SyntaxError
-   puts "Ошибка! в написании команды"
+   puts "Ошибка в написании команды"
 end
+
 puts "Введите команду операционной системы:"
 os_command = STDIN.gets.chomp
-
 # Выполняем команду операционной системы
-puts "Результат выполнения команды ОС:"
-system(os_command)
+res_os=system(os_command)
+if system(os_command)
+   puts "Результат выполнения команды ОС: #{res_os}"
+else
+   puts "Ошибка, такой команды нет"
+end

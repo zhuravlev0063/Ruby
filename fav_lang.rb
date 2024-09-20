@@ -16,16 +16,17 @@ case lang
       puts "Значит скоро станет любимым Ruby"
 end
 
-
+begin
 puts "Пожалуйста введите команду на языке Ruby"
 ruby_command= STDIN.gets.chomp
-
 # Выполняем команду Ruby
-puts "Результат выполнения команды Ruby:"
-eval(ruby_command)
-
-
-
+res=eval(ruby_command)
+puts "Результат выполнения команды Ruby: #{res}"
+rescue NameError
+   puts "Ошибка! такой команды нет"
+rescue SyntaxError
+   puts "Ошибка! в написании команды"
+end
 puts "Введите команду операционной системы:"
 os_command = STDIN.gets.chomp
 

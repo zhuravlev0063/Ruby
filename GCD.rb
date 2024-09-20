@@ -1,4 +1,11 @@
-require 'prime'
+# Функция для проверки, является ли число простым
+def is_prime?(n)
+  return false if n < 2
+  (2..Math.sqrt(n).to_i).each do |i|
+    return false if n % i == 0
+  end
+  true
+end
 
 # Функция для поиска максимального нечетного непростого делителя
 def max_odd_composite_divisor(n)
@@ -6,7 +13,7 @@ def max_odd_composite_divisor(n)
 
   # Перебираем все возможные делители от 1 до n
   (1..n).each do |divisor|
-    if n % divisor == 0 && divisor.odd? && !Prime.prime?(divisor)
+    if n % divisor == 0 && divisor.odd? && !is_prime?(divisor)
       max_divisor = divisor
     end
   end
@@ -15,8 +22,12 @@ def max_odd_composite_divisor(n)
 end
 
 # Функция для вычисления произведения цифр числа
-def product_of_digits(n)
-  n.to_s.chars.map(&:to_i).inject(1) { |product, digit| product * digit }
+def proisv_of_digits(n)
+  proisv = 1
+  n.to_s.each_char do |digit|
+    proisv *= digit.to_i
+  end
+  proisv
 end
 
 # Функция для вычисления НОД (алгоритм Евклида)
@@ -35,14 +46,14 @@ num = gets.chomp.to_i
 max_divisor = max_odd_composite_divisor(num)
 
 # Находим произведение цифр числа
-product_digits = product_of_digits(num)
+proisv_digits = proisv_of_digits(num)
 
 if max_divisor == -1
   puts "Не найдено нечетных непростых делителей."
 else
   # Вычисляем НОД
-  result_gcd = gcd(max_divisor, product_digits)
+  result_gcd = gcd(max_divisor, proisv_digits)
   puts "Максимальный нечетный непростой делитель: #{max_divisor}"
-  puts "Произведение цифр: #{product_digits}"
+  puts "Произведение цифр: #{proisv_digits}"
   puts "НОД: #{result_gcd}"
 end

@@ -13,7 +13,7 @@ def max_odd_composite_divisor(n)
 
   # Перебираем все возможные делители от 1 до n
   (1..n).each do |divisor|
-    if n % divisor == 0 && divisor.odd? && !is_prime?(divisor)
+    if n % divisor == 0 && divisor % 2 != 0 && !is_prime?(divisor)
       max_divisor = divisor
     end
   end
@@ -57,3 +57,4 @@ else
   puts "Произведение цифр: #{proisv_digits}"
   puts "НОД: #{result_gcd}"
 end
+  

@@ -1,3 +1,4 @@
+# Функция для поиска минимального элемента
 def find_min(arr)
   min = arr[0]  # Инициализируем минимальный элемент первым элементом массива
   for i in 1...arr.length
@@ -6,6 +7,7 @@ def find_min(arr)
   min
 end
 
+# Функция для поиска номера первого положительного элемента
 def find_first_positive_index(arr)
   index = 0
   while index < arr.length
@@ -15,6 +17,7 @@ def find_first_positive_index(arr)
   nil  # Если положительных элементов нет
 end
 
+# Функция для поиска первого положительного элемента
 def find_first_positive(arr)
   for i in 0...arr.length
     return arr[i] if arr[i] > 0

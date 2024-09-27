@@ -1,7 +1,7 @@
 def max_prime_divisor(n)
   max_prime = -1
 
-  # Убираем все факторы двойки
+  # Убираем все факторы двойки числа
   while n % 2 == 0
     max_prime = 2
     n /= 2

@@ -7,7 +7,7 @@ case lang
   when "ruby"
      puts "Не подлизывайся"
   when "python"
-     puts "скучно"
+     puts "нормально"
   when "java"
      puts "хороший выбор"
   when "c++"

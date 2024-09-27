@@ -47,23 +47,23 @@ end
 case method_choice
 when 1
   # Вызов метода для нахождения минимального элемента
-  result = find_min(arr)
-  puts "Минимальный элемент: #{result}"
+  result_1 = find_min(arr)
+  puts "Минимальный элемент: #{result_1}"
 
 when 2
   # Вызов метода для нахождения индекса первого положительного элемента
-  result = find_first_positive_index(arr)
-  if result
-    puts "Номер первого положительного элемента: #{result}"
+  result_2 = find_first_positive_index(arr)
+  if result_2
+    puts "Номер первого положительного элемента: #{result_2}"
   else
     puts "Положительных элементов нет"
   end
 
 when 3
   # Вызов метода для нахождения первого положительного элемента
-  result = find_first_positive(arr)
-  if result
-    puts "Первый положительный элемент: #{result}"
+  result_3 = find_first_positive(arr)
+  if result_3
+    puts "Первый положительный элемент: #{result_3}"
   else
     puts "Положительных элементов нет"
   end

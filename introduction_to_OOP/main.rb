@@ -1,11 +1,16 @@
 require_relative 'student'
 
-# Создание объектов
-student1 = Student.new(last_name: "Ivanov", first_name: "Ivan", middle_name: "Ivanovich", id: 1, phone: "123-456", telegram: "@ivanov", email: "ivanov@example.com", git: "github.com/ivanov")
-student2 = Student.new(last_name: "Zhuravlev", first_name: "Daniil", middle_name: "Dmitrievich", id: 2, email: "petrov@example.com")
-student3 = Student.new(last_name: "Osipov", first_name: "Vasiliy", middle_name: "Romanovich", id: 3, git: "github.com/sidorov")
+begin
+  # Создание объектов с корректными номерами
+  student1 = Student.new("Ivanov", "Ivan", "Ivanovich", id: 1, phone_number: "+7 (123) 456-78-90", telegram: "@ivanov", email: "ivanov@example.com", git: "github.com/ivanov")
+  student2 = Student.new("Zhuravlev", "Daniil", "Dmitrievich", id: 2, email: "petrov@example.com")
 
-# Вывод информации о студентах
-puts student1
-puts student2
-puts student3
+  # Вывод информации о студентах
+  puts student1
+  puts student2
+
+  # Попытка создания объекта с некорректным номером телефона
+  student3 = Student.new("Osipov", "Vasiliy", "Romanovich", id: 3, phone_number: "123ABC")
+rescue ArgumentError => e
+  puts e.message
+end

@@ -1,27 +1,39 @@
 class Student
-  # Автоматическое создание геттеров и сеттеров для всех полей
-  attr_accessor :id, :last_name, :first_name, :middle_name, :phone, :telegram, :email, :git
+  attr_accessor :surname, :firstname, :lastname, :id, :phone_number, :telegram, :email, :git
 
-  # Конструктор
-  def initialize(last_name:, first_name:, middle_name:, id: nil, phone: nil, telegram: nil, email: nil, git: nil)
+  # Конструктор с проверкой номера телефона
+  def initialize(surname, firstname, lastname, id: nil, phone_number: nil, telegram: nil, email: nil, git: nil)
+    @surname = surname
+    @firstname = firstname
+    @lastname = lastname
     @id = id
-    @last_name = last_name
-    @first_name = first_name
-    @middle_name = middle_name
-    @phone = phone
+
+    # Проверка номера телефона через метод класса
+    if Student.is_phone_number_valid?(phone_number)
+      @phone_number = phone_number
+    else
+      raise ArgumentError.new("Неверный номер телефона для пользователя #{@id} #{@surname} #{@firstname} #{@lastname}")
+    end
+
     @telegram = telegram
     @email = email
     @git = git
   end
 
+  # Метод класса для проверки номера телефона
+  def self.is_phone_number_valid?(checked_phone_number)
+    phone_number_reg = /^\+?\d\s?\(?\s*\d{3}\s*\)?\s?\d{3}\-{0,1}\d{2}\-{0,1}\d{2}\s*$/
+    return checked_phone_number =~ phone_number_reg
+  end
+
   # Метод для вывода информации об объекте
   def to_s
-    info = "ФИО: #{@last_name} #{@first_name} #{@middle_name}"
-    info = "ID: #{@id}, " + info if @id
-    info += ", Телефон: #{@phone}" if @phone
-    info += ", Телеграм: #{@telegram}" if @telegram
-    info += ", Почта: #{@email}" if @email
-    info += ", Git: #{@git}" if @git
-    info
+    info = "#{@id} ФИО: #{@surname} #{@firstname} #{@lastname}.\n"
+    contact_info = "Данные для связи:\n"
+    contact_info += "Номер телефона: #{@phone_number}\n" if @phone_number
+    contact_info += "Телеграм: #{@telegram}\n" if @telegram
+    contact_info += "Email: #{@email}\n" if @email
+    contact_info += "Git: #{@git}\n" if @git
+    "#{info}#{contact_info}\n"
   end
 end

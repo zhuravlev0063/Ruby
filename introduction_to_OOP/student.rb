@@ -75,4 +75,14 @@ class Student
   def git=(new_git)
     @git = new_git
   end
+
+  # Метод для вывода информации об объекте
+  def to_s
+    info = "ID: #{@id}, ФИО: #{@last_name} #{@first_name} #{@middle_name}"
+    info += ", Телефон: #{@phone}" if @phone
+    info += ", Телеграм: #{@telegram}" if @telegram
+    info += ", Почта: #{@email}" if @email
+    info += ", Git: #{@git}" if @git
+    info
+  end
 end

@@ -1,9 +1,6 @@
 class Student
-  # Автоматическое создание геттеров (только для чтения)
-  attr_reader :id, :last_name, :first_name, :middle_name, :phone, :telegram, :email, :git
-
-  # Автоматическое создание сеттеров (только для записи)
-  attr_writer :id, :last_name, :first_name, :middle_name, :phone, :telegram, :email, :git
+  # Автоматическое создание геттеров и сеттеров для всех полей
+  attr_accessor :id, :last_name, :first_name, :middle_name, :phone, :telegram, :email, :git
 
   # Конструктор
   def initialize(last_name:, first_name:, middle_name:, id: nil, phone: nil, telegram: nil, email: nil, git: nil)

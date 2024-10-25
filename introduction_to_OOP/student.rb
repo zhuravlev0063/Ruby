@@ -1,7 +1,7 @@
 class Student
-  # Геттеры и сеттеры
-  attr_accessor :id, :telegram
-  attr_reader :surname, :firstname, :lastname, :telegram, :email, :git, :phone_number
+  # Геттеры для всех полей, но без сеттеров для контактов
+  attr_accessor :id
+  attr_reader :surname, :firstname, :lastname, :phone_number, :telegram, :email, :git
 
   # Конструктор
   def initialize(surname, firstname, lastname, id: nil, phone_number: nil, telegram: nil, email: nil, git: nil)
@@ -9,18 +9,9 @@ class Student
     self.firstname = firstname
     self.lastname = lastname
     @id = id
-    self.phone_number = phone_number
-    self.telegram = telegram
-    self.email = email
     self.git = git
-    validate # Вызов метода для проверки при создании объекта
-  end
-
-  # Метод для общей проверки валидности
-  def self.validate_field(value, regex, error_message)
-    return value if value.nil? || value =~ regex
-
-    raise ArgumentError.new(error_message)
+    set_contacts(phone_number: phone_number, telegram: telegram, email: email)
+    validate
   end
 
   # Валидация фамилии
@@ -38,28 +29,26 @@ class Student
     @lastname = Student.validate_field(lastname, /^[A-Za-zА-яа-я]+$/, "Неверное отчество студента: #{@id} #{@surname} #{@firstname}")
   end
 
-  # Валидация номера телефона
-  def phone_number=(phone_number)
-    phone_number_reg = /^\+?\d{1,3}\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}$/
-    @phone_number = Student.validate_field(phone_number, phone_number_reg, "Неверный номер телефона для студента: #{@id} #{@surname} #{@lastname} #{@firstname}")
+  # Публичный метод для установки контактов
+  def set_contacts(phone_number: nil, telegram: nil, email: nil)
+    @phone_number = Student.validate_field(phone_number, /^\+?\d{1,3}\s?\(?\s*\d{3}\s*\)?\s?\d{3}-?\d{2}-?\d{2}\s*$/, "Неверный номер телефона: #{@id} #{@surname} #{@firstname}") if phone_number
+    @telegram = telegram
+    @email = Student.validate_field(email, /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, "Неверный адрес электронной почты: #{@id} #{@surname} #{@firstname}") if email
+    validate_contact_presence
   end
 
-  # Валидация email
-  def email=(email)
-    email_reg = /^[\w+\-.]+@[a-z\d\-.]+\.[a-z]+$/i
-    @email = Student.validate_field(email, email_reg, "Неверный адрес электронной почты: #{@id} #{@surname} #{@lastname} #{@firstname}")
-  end
-
-  # Валидация git
+  # Валидация Git
   def git=(git)
     git_reg = /^https:\/\/github\.com\/[A-Za-z0-9._-]+\/?$/
     @git = Student.validate_field(git, git_reg, "Неверная ссылка Git: #{@id} #{@surname} #{@lastname} #{@firstname}")
+    validate_git_presence
   end
 
-  # Валидация Telegram handle
-  def telegram=(telegram)
-    telegram_reg = /^@[a-zA-Z0-9_]{5,}$/
-    @telegram = Student.validate_field(telegram, telegram_reg, "Неверный Telegram handle для студента: #{@id} #{@surname} #{@lastname} #{@firstname}")
+  # Метод для общей проверки валидности
+  def self.validate_field(value, regex, error_message)
+    return value if value.nil? || value =~ regex
+
+    raise ArgumentError.new(error_message)
   end
 
   # Метод для проверки наличия Git
@@ -90,4 +79,8 @@ class Student
     contact_info += "Git: #{@git}\n" if @git
     "#{info}#{contact_info}\n"
   end
+
+  private
+  # Контакты теперь можно установить только через set_contacts
+  attr_writer :phone_number, :telegram, :email
 end

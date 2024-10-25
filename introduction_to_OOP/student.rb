@@ -1,5 +1,5 @@
 class Student
-  # Автоматическое создание геттеров для всех полей
+  # Геттеры и сеттеры
   attr_accessor :id, :telegram
   attr_reader :surname, :firstname, :lastname, :telegram, :email, :git, :phone_number
 
@@ -13,6 +13,7 @@ class Student
     self.telegram = telegram
     self.email = email
     self.git = git
+    validate # Вызов метода для проверки при создании объекта
   end
 
   # Метод для общей проверки валидности
@@ -59,6 +60,24 @@ class Student
   def telegram=(telegram)
     telegram_reg = /^@[a-zA-Z0-9_]{5,}$/
     @telegram = Student.validate_field(telegram, telegram_reg, "Неверный Telegram handle для студента: #{@id} #{@surname} #{@lastname} #{@firstname}")
+  end
+
+  # Метод для проверки наличия Git
+  def validate_git_presence
+    raise ArgumentError.new("У студента #{@id} #{@surname} #{@firstname} отсутствует ссылка на GitHub") if @git.nil?
+  end
+
+  # Метод для проверки наличия хотя бы одного контакта
+  def validate_contact_presence
+    if @phone_number.nil? && @telegram.nil? && @email.nil?
+      raise ArgumentError.new("У студента #{@id} #{@surname} #{@firstname} должен быть указан хотя бы один контакт")
+    end
+  end
+
+  # Метод для запуска всех валидаций
+  def validate
+    validate_git_presence
+    validate_contact_presence
   end
 
   # Метод для вывода информации об объекте

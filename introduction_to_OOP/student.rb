@@ -80,7 +80,34 @@ class Student
     "#{info}#{contact_info}\n"
   end
 
+  # Метод для получения ФИО студента
+  def get_name
+    "#{@surname} #{@firstname[0]}.#{@lastname[0]}."
+  end
+
+  # Метод для получения информации о любом средстве связи
+  def get_contact
+    if @phone_number
+      "Телефон: #{@phone_number}"
+    elsif @email
+      "Электронная почта: #{@email}"
+    elsif @telegram
+      "Telegram: #{@telegram}"
+    end
+  end
+
+  # Метод для получения информации о Git и любом контакте
+  def get_git_and_contact
+    "#{@git} #{get_contact}"
+  end
+
+  # Метод для получения краткой информации о студенте
+  def getInfo
+    "#{get_name} #{@git} #{get_contact}"
+  end
+
   private
-  # Контакты теперь можно установить только через set_contacts
+
+  # Приватные методы и атрибуты
   attr_writer :phone_number, :telegram, :email
 end

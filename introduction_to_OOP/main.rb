@@ -1,16 +1,35 @@
-require_relative 'student'
+# main.rb
+require './person' 
+require './student' 
+require './student_short' 
 
-begin
-  # Создание объектов с корректными номерами
-  student1 = Student.new("Ivanov", "Ivan", "Ivanovich", id: 1, phone_number: "+7 (123) 456-78-90", telegram: "@ivanov", email: "ivanov@example.com", git: "https:github.com/ivanov")
-  student2 = Student.new("Zhuravlev", "Daniil", "Dmitrievich", id: 2, email: "danil@example.com")
+# Создание объекта класса Student
+student = Student.new(
+  surname: "Иванов",
+  firstname: "Иван",
+  lastname: "Иванович",
+  id: 1,
+  phone_number: "+79101234567",
+  telegram: "ivanov_telegram",
+  email: "ivanov@example.com",
+  git: "https://github.com/ivanov"
+)
 
-  # Вывод информации о студентах
-  puts student1
-  puts student2
+# Вывод информации о студенте
+puts "Информация о студенте:"
+puts student.getInfo
 
-  # Попытка создания объекта с некорректным номером телефона
-  student3 = Student.new("Osipov", "Vasiliy", "Romanovich", id: 3, phone_number: "+7 123 456 78 90", telegram: "vasiliy", email: "vasiliy.com")
-rescue ArgumentError => e
-  puts e.message
-end
+# Создание объекта класса Student_short из объекта Student
+student_short = Student_short.new(student)
+
+# Вывод информации о кратком представлении студента
+puts "\nКраткая информация о студенте (через Student_short):"
+puts student_short
+
+# Создание объекта класса Student_short из строки
+info_string = "Петров П.П. https://github.com/petrov Телефон: +79107654321"
+student_short_from_string = Student_short.new(2, info_string)
+
+# Вывод информации о кратком представлении студента из строки
+puts "\nКраткая информация о студенте (через строку):"
+puts student_short_from_string

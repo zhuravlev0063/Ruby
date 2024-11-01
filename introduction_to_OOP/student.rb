@@ -1,32 +1,55 @@
-# class_student.rb
-# Подкласс Student представляет более подробную информацию о студенте, расширяя базовые атрибуты класса Person.
+require_relative './person.rb'
 
-require './person' # Подключение базового класса Person
+class Student<Person
+  attr_accessor :surname, :firstname, :lastname
 
-class Student < Person
-  # Конструктор класса Student, который вызывает конструктор суперкласса Person
+  #конструктор класса
   def initialize(surname:, firstname:, lastname:, id: nil, phone_number: nil, telegram: nil, email: nil, git: nil)
-    # Вызов конструктора родительского класса с передачей всех параметров
-    super(surname: surname, firstname: firstname, lastname: lastname, id: id, phone_number: phone_number, telegram: telegram, email: email, git: git)
+    super(id: id, git: git, phone_number: phone_number, telegram: telegram, email: email)
+    self.surname = surname
+    self.firstname = firstname 
+    self.lastname = lastname
+  end 
+
+  #Проверка наличия любого контакта для связи, git 
+  def has_contact_and_git?
+    @git!=nil && @email!=nil || @telegram!=nil || @phone_number!=nil
   end
 
-  # Метод для получения информации о студенте в кратком формате
-  # Возвращает Фамилию, Имя и Инициалы, а также Git и контактную информацию
-  def getInfo
-    "#{get_full_name} Git: #{@git}, Контакт: #{get_contact}"
-  end
+  #Вывод всех данных о студенте на экран
+  def to_s
+    "\nID: #{@id}\nФИО: #{@surname} #{@firstname} #{@lastname} #{"\nНомер телфона: #{@phone_number}" if @phone_number} #{"\nПочта: #{@email}" if @email} #{"\nТелеграм: #{@telegram}" if @telegram} #{"\nGit: #{@git}" if @git}"
+  end  
 
-  # Метод для получения доступной контактной информации о студенте
-  # Проверяет наличие каждого типа контакта и возвращает первый найденный, если он есть
-  def get_contact
-    if !@phone_number.nil?
-      "Телефон: #{@phone_number}"
-    elsif !@email.nil?
-      "Электронная почта: #{@email}"
-    elsif !@telegram.nil?
-      "Telegram: #{@telegram}"
-    else
-      "Нет доступных контактов"
+  #проверка на корректность ФИО
+
+  def self.valid_name?(name)
+    name.match?(/^[A-Za-zА-Яа-яЁё]+$/)
+  end 
+ 
+
+  private
+    def surname=(surname)
+      if self.class.valid_name?(surname)
+        @surname = surname
+      else 
+        raise ArgumentError, 'Invalid surname'
+      end  
     end
-  end
+      
+    def firstname=(firstname)
+      if self.class.valid_name?(firstname) 
+        @firstname=firstname
+      else 
+        raise ArgumentError, 'Invalid firstname'
+      end  
+    end 
+
+    def lastname=(lastname)
+      if self.class.valid_name?(lastname)
+        @lastname=lastname
+      else 
+        raise ArgumentError, 'Invalid lastname'
+      end  
+    end  
 end

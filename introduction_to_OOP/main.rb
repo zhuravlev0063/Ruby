@@ -9,7 +9,7 @@ student2 = Student.new(surname: "Софронов", firstname:"Игорь", last
 puts student1
 puts student2
 puts student2.get_info
-student2_short = Student_short.about_student(student2)
-student1_short = Student_short.from_sting(id: student1.id, string: student1.get_info)
+student2_short = Student_short.create_from_student(student2)
+student1_short = Student_short.from_string(id: student1.id, string: student1.get_info)
 puts student2
 puts student1_short

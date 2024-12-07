@@ -1,6 +1,8 @@
 require_relative './person.rb'
 
 class Student_short < Person
+
+  attr_accessor :fullname, :contact
   
   def self.create_from_student(student)
     new(id: student.id, git: student.git, fullname: student.fullname, contact: student.contact)

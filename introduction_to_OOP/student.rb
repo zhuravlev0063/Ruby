@@ -1,7 +1,7 @@
 require_relative './person.rb'
 
 class Student<Person
-  attr_accessor :surname, :firstname, :lastname
+  
 
   def initialize(surname:, firstname:, lastname:, id: nil, phone_number: nil, telegram: nil, email: nil, git: nil)
     super(id: id, git: git, phone_number: phone_number, telegram: telegram, email: email)

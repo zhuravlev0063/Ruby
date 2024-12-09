@@ -10,22 +10,9 @@ class Student<Person
     self.lastname = lastname
   end 
 
-  def has_contact?
-    if @email!=nil || @telegram!=nil || @phone_number!=nil
-      puts "Всё хорошо"
-    else
-      raise ArgumentError.new("Нет:\n#{@id} #{@surname} #{@lastname} #{@firstname}")
-    end
+  def has_contact_and_git?
+    has_contact? && has_git?
   end
-
-  def has_git?
-    if @git!=nil
-      puts "Всё хорошо"
-    else
-      raise ArgumentError.new("Нет:\n#{@id} #{@surname} #{@lastname} #{@firstname}")
-    end
-  end
-
 
   def to_s
     "\nID: #{@id}\nФИО: #{@surname} #{@firstname} #{@lastname} #{"\nНомер телфона: #{@phone_number}" if @phone_number} #{"\nПочта: #{@email}" if @email} #{"\nТелеграм: #{@telegram}" if @telegram} #{"\nGit: #{@git}" if @git}"
@@ -38,6 +25,16 @@ class Student<Person
  
 
   private
+
+  def has_contact?
+    @email != nil || @telegram != nil || @phone_number != nil
+  end
+  
+  def has_git?
+    @git != nil
+  end
+  
+
     def surname=(surname)
       if self.class.valid_name?(surname)
         @surname = surname

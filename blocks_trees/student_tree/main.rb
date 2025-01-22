@@ -6,11 +6,11 @@ require_relative 'binary_tree'
 dan= Student.new(
   id: "1",
   surname: "Журавлёв",
-  name:"Даниил",
+  firstname:"Даниил",
   lastname: "Дмитриевич",
   email: "example@mail.com",
   git: "sdfghjk",
-  number_phone: "89182188064",
+  phone_number: "89182188064",
   birthdate: "14/03/2005"
 
 )
@@ -18,9 +18,9 @@ dan= Student.new(
 igor= Student.new(
   id: "2",
   surname: "Софронов",
-  name:"Игорь",
+  firstname:"Игорь",
   lastname: "Дмитриевич",
-  number_phone: "89182188064",
+  phone_number: "89182188064",
   telegram: "igor",
   git: "gsgsgs",
   email: "example@mail.com",
@@ -40,6 +40,6 @@ tree.add(dan)
 tree.add(igor)
 
 tree.iterator.each do |node|
-	puts node.name
+	puts node.firstname
 end
 

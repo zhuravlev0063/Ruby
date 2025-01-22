@@ -8,7 +8,7 @@ class Student<Person
 
   #конструктор класса
   def initialize(id:nil,surname:,firstname:,lastname:,phone_number:nil,telegram:nil,email:nil,git:nil,birthdate: nil)
-    super(id: id, git: git,number_phone: phone_number, telegram: telegram, email: email)
+    super(id: id, git: git,phone_number: phone_number, telegram: telegram, email: email)
     self.surname = surname
     self.firstname = firstname 
     self.lastname = lastname
@@ -30,13 +30,13 @@ class Student<Person
 
   #Вывод всех данных о студенте на экран
   def to_s
-    "\nID: #{@id}\nФИО: #{@surname} #{@name} #{@lastname} #{"\nНомер телфона: #{@number_phone}" if @number_phone} #{"\nПочта: #{@email}" if @email} #{"\nТелеграм: #{@telegram}" if @telegram} #{"\nGit: #{@git}" if @git} #{"\nдень рождения: #{@birthdate}"}"
+    "\nID: #{@id}\nФИО: #{@surname} #{@firstname} #{@lastname} #{"\nНомер телфона: #{@phone_number}" if @phone_number} #{"\nПочта: #{@email}" if @email} #{"\nТелеграм: #{@telegram}" if @telegram} #{"\nGit: #{@git}" if @git} #{"\nдень рождения: #{@birthdate}"}"
   end  
 
   #проверка на корректность ФИО
 
-  def self.valid_name?(name)
-    name.match?(/^[A-Za-zА-Яа-яЁё]+$/)
+  def self.valid_name?(firstname)
+    firstname.match?(/^[A-Za-zА-Яа-яЁё]+$/)
   end 
 
   def self.birthdate?(birthdate)
@@ -75,7 +75,7 @@ class Student<Person
       end  
     end
       
-    def name=(name)
+    def firstname=(name)
       if self.class.valid_name?(name) 
         @name=name
       else 

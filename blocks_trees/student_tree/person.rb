@@ -27,15 +27,15 @@ class Person
   end
 
     #устанавливает значения поля или полей для введенных контактов
-  def set_contacts(number_phone: nil, telegram: nil, email: nil)
-    self.number = number_phone if number_phone
+  def set_contacts(phone_number: nil, telegram: nil, email: nil)
+    self.number = phone_number if phone_number
     self.telegram = telegram if telegram
     self.email = email if email
   end 
     
   #Фамилия и Инициалы
   def fullname
-    "#{@surname} #{@name} #{@lastname}"
+    "#{@surname} #{@firstname} #{@lastname}"
   end
 
   #краткая информация о студенте
@@ -53,7 +53,7 @@ class Person
   end 
 
   def self.valid_number?(phone_number)
-    number_phone.match?(/^\d{11}$/)
+    phone_number.match?(/^\d{11}$/)
   end
   
   def self.valid_telegram?(telegram)

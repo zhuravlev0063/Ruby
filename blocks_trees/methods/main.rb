@@ -16,9 +16,9 @@ loop do
   
     case choice
     when '1'
-        puts elements_before_last_min(array).inspect
+        puts elements_before_last_min(array)
     when '2'
-        puts elements_after_first_max(array).inspect
+        puts elements_after_first_max(array)
     when '3'
         puts alternating_signs?(array)
     when '4'         

@@ -79,7 +79,7 @@ class Person
   end 
 
   private
-  def number=(phone_number)
+  def phone_number=(phone_number)
     if self.class.valid_number?(phone_number)
       @phone_number = phone_number
     else 

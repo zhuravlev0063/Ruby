@@ -1,16 +1,19 @@
+require_relative 'data_table'
+
 class Data_list
+
   def initialize(list)
     self.list = list
-    self.selected_elems = []
+    self.selected_indexes = []
     self.index = 0
   end
   
-  def select(index)
-    self.selected_elems = list[index]
+  def GET_select(index)
+    self.selected_indexes = list[index]
   end
   
-  def get_select(index)
-    raise "Index out of range" if index < 0 || index >= list.length
+  def select(index)
+    raise "Индекс вне диапазона" if index < 0 || index >= list.length
     self.selected_indexes << index
   end
   
@@ -22,15 +25,16 @@ class Data_list
     result_data = []
     self.selected_indexes.each do |index|
       data = self.list[index]
-      new_row = [self.index] + row_from_attrs(data)
+      new_row = [self.index].concat(row_from_attrs(data))
       result_data << new_row 
-      self.index++
+      self.index+=1
     end
-    result_data
+    result_table = Data_table.new(result_data)
   end
 
   private
-  attr_accessor :list,  :selected_elems :index
+
+  attr_accessor :list, :selected_indexes, :index
 
   def row_from_attrs(data) 
     raise NotImplementedError, "Must be implemented!"

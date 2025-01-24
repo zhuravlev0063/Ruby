@@ -24,7 +24,7 @@ class Data_table
   private 
   attr_reader :data 
   
-  def data=(data) # check if data is two-dimensional array
+  def data=(data) 
     if data.is_a?(Array) && data.all? { |row| row.is_a?(Array) }
       @data = data
     else

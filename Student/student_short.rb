@@ -2,6 +2,7 @@ require_relative './person.rb'
 
 class Student_short < Person
 
+  attr_reader :fullname, :contact
   
   def self.create_from_student(student)
     new(id: student.id, git: student.git, fullname: student.fullname, contact: student.contact)
@@ -23,7 +24,7 @@ class Student_short < Person
 
   
   private
-  attr_accessor :fullname, :contact
+  attr_writer :fullname, :contact
 
   private_class_method :new
 

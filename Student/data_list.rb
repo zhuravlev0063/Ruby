@@ -8,10 +8,14 @@ class Data_list
     self.index = 0
   end
   
-  def GET_select(index)
+  def get_select(index)
     self.selected_indexes = list[index]
   end
   
+  def clear_selected
+    self.selected_indexes = []
+  end
+
   def select(index)
     raise "Индекс вне диапазона" if index < 0 || index >= list.length
     self.selected_indexes << index
@@ -32,9 +36,18 @@ class Data_list
     result_table = Data_table.new(result_data)
   end
 
+  def list=(list)
+    if list.is_a?(Array) && list.length == get_names.length + 1
+      self.list = list
+    else
+      raise ArgumentError, "Wrong list format"
+    end
+  end
+
   private
 
-  attr_accessor :list, :selected_indexes, :index
+  attr_accessor :selected_indexes, :index
+  attr_reader :list
 
   def row_from_attrs(data) 
     raise NotImplementedError, "Must be implemented!"

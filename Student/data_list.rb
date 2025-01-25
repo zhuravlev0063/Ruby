@@ -30,7 +30,7 @@ class Data_list
   end
 
   def list=(list)
-    if list.is_a?(Array) && list.length == get_names.length + 1
+    if list.is_a? && list.length == get_names.length + 1
       self.list = list
     else
       raise ArgumentError, "Wrong list format"

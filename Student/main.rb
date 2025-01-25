@@ -47,7 +47,10 @@ end
 dan_short=Student_short.from_string(id: dan.id, string: dan.get_info)
 puts "#4:"
 data_table = Data_table.new([[]])
+
 data_list = Data_list_student_short.new([dan_short])
+
+data_list.get_data
 puts data_list.row_from_attrs(dan_short)
 data_list.select(0)
 result =  data_list.get_data.get_by_index(0, 1)

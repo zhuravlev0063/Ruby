@@ -1,6 +1,6 @@
 class Person
 
-  attr_reader :firstname, :lastname, :surname, :phone_number, :email, :telegram, :git, :id
+  attr_reader :phone_number, :email, :telegram, :git, :id
 
   def initialize(id: nil, git: nil, phone_number: nil, telegram: nil, email: nil)
     self.id = id if id
@@ -42,8 +42,12 @@ class Person
     end
   end
 
+  def has_contact_and_git?
+    has_contact? && has_git?
+  end
+
   #краткая информация о студенте
-  def get_info()
+  def get_info()  
     "#{fullname()}, #{contact()}, #{@git}"
   end
 
@@ -85,6 +89,15 @@ class Person
   end 
 
   private
+
+  def has_contact?
+    @email != nil || @telegram != nil || @phone_number != nil
+  end
+  
+  def has_git?
+    @git != nil
+  end
+
   def phone_number=(phone_number)
     if self.class.valid_number?(phone_number)
       @phone_number = phone_number

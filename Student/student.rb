@@ -5,6 +5,7 @@ class Student<Person
 
   include Comparable
   attr_accessor :birthdate
+  attr_reader :surname, :firstname, :lastname
 
   #конструктор класса
   def initialize(id:nil,surname:,firstname:,lastname:,phone_number:nil,telegram:nil,email:nil,git:nil,birthdate: nil)
@@ -14,10 +15,6 @@ class Student<Person
     self.lastname = lastname
     self.birthdate = birthdate
   end 
-
-  def has_contact_and_git?
-    has_contact? && has_git?
-  end
 
   # Реализация сравнения студентов по дате рождения
   def <=>(other)
@@ -58,14 +55,6 @@ class Student<Person
   end
 
   private
-
-  def has_contact?
-    @email != nil || @telegram != nil || @phone_number != nil
-  end
-  
-  def has_git?
-    @git != nil
-  end
 
     def surname=(surname)
       if self.class.valid_name?(surname)

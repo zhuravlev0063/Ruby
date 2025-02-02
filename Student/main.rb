@@ -2,7 +2,8 @@ require_relative './student'
 require_relative './binary_tree'
 require_relative './student_short'
 require_relative './data_list_student_short'
-
+require_relative './student_list_json'
+require_relative './student_list_yaml'
 
 dan= Student.new(
   id: "1",

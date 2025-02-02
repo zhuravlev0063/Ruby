@@ -36,19 +36,9 @@ class Data_list
     result_table = Data_table.new(result_data)
   end
 
-  def list=(list)
-    if list.is_a?(Array) && list.length == get_names.length + 1
-      self.list = list
-    else
-      raise ArgumentError, "Wrong list format"
-    end
-  end
-
   private
 
-  attr_accessor :selected_indexes, :index
-  attr_reader :list
-
+  attr_accessor :selected_indexes, :index, :list
   def row_from_attrs(data) 
     raise NotImplementedError, "Must be implemented!"
   end

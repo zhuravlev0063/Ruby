@@ -1,0 +1,11 @@
+sljson = Student_list_JSON.new()
+
+
+sljson.sort.each do |element|
+  puts element
+end
+slyaml = Student_list_YAML.new() 
+slyaml.insert_student(dan)
+slyaml.read_list_of_students.each do |student|
+  puts student
+end

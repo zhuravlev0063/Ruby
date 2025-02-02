@@ -26,11 +26,18 @@ class Data_list
   end
 
   def get_data
-    raise NotImplementedError, "Must be implemented!"
+    result_data = []
+    self.selected_indexes.each do |index|
+      data = self.list[index]
+      new_row = [self.index].concat(row_from_attrs(data))
+      result_data << new_row 
+      self.index+=1
+    end
+    result_table = Data_table.new(result_data)
   end
 
   def list=(list)
-    if list.is_a? && list.length == get_names.length + 1
+    if list.is_a?(Array) && list.length == get_names.length + 1
       self.list = list
     else
       raise ArgumentError, "Wrong list format"

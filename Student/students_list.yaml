@@ -1,18 +1,46 @@
-- id: 14
-  surname: Sofronov
-  name: Igor
-  second_name: Dmitrievich
-  birthdate: 2004-08-08
-  phone: 
-  telegram: "sofr"
-  email: gsgsg@yandex.ru
-  git: gsgsh
-- id: 
-  surname: Dan
-  name: Zhur
-  second_name: Urievuch
-  birthdate: 2004-03-03
-  phone: '88008363636'
-  telegram: 
-  email: 
-  git: 
+---
+- :id: '14'
+  :surname: Софронов
+  :firstname:
+  :lastname: Дмитриевич
+  :birthdate: '08/08/2004'
+  :telegram: sofr
+  :email: gsgsg@yandex.ru
+  :phone_number:
+  :git: gsgsh
+- :id:
+  :surname: Журавлёв
+  :firstname:
+  :lastname: Юревич
+  :birthdate: 14/03/2004
+  :telegram:
+  :email:
+  :phone_number: '88008363636'
+  :git:
+- :id: '1'
+  :surname: Суров
+  :firstname:
+  :lastname: Дмитриевич
+  :birthdate: 14/03/2005
+  :telegram:
+  :email: example@mail.com
+  :phone_number: '89182188064'
+  :git: sdfghjk
+- :id: '1'
+  :surname: Журавлёв
+  :firstname:
+  :lastname: Дмитриевич
+  :birthdate: 14/03/2005
+  :telegram:
+  :email: example@mail.com
+  :phone_number: '89182188064'
+  :git: sdfghjk
+- :id: '1'
+  :surname: Журавлёв
+  :firstname:
+  :lastname: Дмитриевич
+  :birthdate: 14/03/2005
+  :telegram:
+  :email: example@mail.com
+  :phone_number: '89182188064'
+  :git: sdfghjk

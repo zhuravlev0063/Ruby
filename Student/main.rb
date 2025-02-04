@@ -4,6 +4,7 @@ require_relative './student_short'
 require_relative './data_list_student_short'
 require_relative './student_list_json'
 require_relative './student_list_yaml'
+require_relative './file_handler'
 
 dan= Student.new(
   id: "1",
@@ -57,25 +58,10 @@ data_list.select(0)
 result =  data_list.get_data.get_by_index(0, 1)
 puts result
 
-sljson = StudentListJSON.new('student_list.json')
-puts "#4 №2 вывод всех студентов (json):"
-sljson.read_list_of_students.each do |student|
-  puts student.fullname
-end
-puts "#4 №2 сортировка по фамилии (json):"
-sljson.sort.each do |element|
-  puts element
-end
+sl = Student_list.new 
+sl.strategy = YAML_strategy.new('students_list.yaml')
+sl.insert_student(dan)
 
-slyaml = Student_list_YAML.new('students_list.yaml') 
-slyaml.insert_student(igor)
-puts "#4 №2 вывод всех студентов (yaml):"
-slyaml.read_list_of_students.each do |student|
-  puts student
-end
-
-puts "#4 №2 сортировка по фамилии (yaml):"
-slyaml.sort.each do |element|
-  puts element
-end
-slyaml.delete_by_id(igor.id)
+temp = sl.get_k_n_student_short_list(1, 2)
+temp.select(1)
+puts temp.get_data.count_of_rows

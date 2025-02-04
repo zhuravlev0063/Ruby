@@ -1,9 +1,13 @@
 require 'json'
 require_relative 'student_short'
 require_relative 'student'
-require_relative 'file_handler'
+require_relative 'strategy'
 
-class StudentListJSON<FileHandler
+
+class JSON_strategy < Strategy
+  def initialize(path)
+    self.path = path
+  end
 
   def read_list_of_students
     file = File.read(self.path)

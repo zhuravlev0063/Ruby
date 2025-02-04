@@ -2,9 +2,13 @@ require 'yaml'
 require 'date'
 require_relative 'student_short'
 require_relative 'student'
-require_relative 'file_handler'
+require_relative 'strategy'
 
-class Student_list_YAML<FileHandler
+class YAML_strategy < Strategy
+  
+  def initialize(path)
+    self.path = path
+  end
 
   def read_list_of_students
     file = File.read(self.path)

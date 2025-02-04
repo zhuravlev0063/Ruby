@@ -1,4 +1,3 @@
-
 class BankAccount
   def initialize(balance)
     @balance = balance  

@@ -4,8 +4,7 @@ require_relative 'person'
 class Student<Person
 
   include Comparable
-  attr_accessor :birthdate
-  attr_reader :surname, :firstname, :lastname
+  attr_accessor :birthdate, :surname, :firstname, :lastname
 
   #конструктор класса
   def initialize(id:nil,surname:,firstname:,lastname:,phone_number:nil,telegram:nil,email:nil,git:nil,birthdate: nil)
@@ -47,8 +46,6 @@ class Student<Person
 
   private
 
-  attr_reader :number_phone, :email, :telegram
-
     def surname=(surname)
       if self.class.valid_name?(surname)
         @surname = surname
@@ -80,4 +77,6 @@ class Student<Person
         raise ArgumentError, 'Invalid birthdate'
       end  
     end  
+    private
+    attr_reader :phone_number, :email, :telegram
 end

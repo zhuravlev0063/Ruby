@@ -1,6 +1,9 @@
 require 'yaml'
+require 'date'
 require_relative 'student_short'
 require_relative 'student'
+
+
 class Student_list_YAML
   def initialize(path)
     self.path = path
@@ -37,9 +40,9 @@ class Student_list_YAML
       raise IndexError, 'Index out of range'
     end
   end
-  def sort # sort by surname and name
+  def sort
     students_list = read_list_of_students.sort_by do |student|
-      student.initials
+      student.fullname
     end
   end
   def insert_student(student)

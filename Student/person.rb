@@ -1,6 +1,6 @@
 class Person
 
-  attr_reader :phone_number, :email, :telegram, :git, :id
+  attr_reader :git, :id
 
   def initialize(id: nil, git: nil, phone_number: nil, telegram: nil, email: nil)
     self.id = id if id

@@ -1,6 +1,6 @@
 require 'yaml'
 require_relative 'student_short'
-require_relative 'students'
+require_relative 'student'
 class Student_list_YAML
   def initialize(path)
     self.path = path

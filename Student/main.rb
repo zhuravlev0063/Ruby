@@ -56,3 +56,13 @@ puts data_list.row_from_attrs(dan_short)
 data_list.select(0)
 result =  data_list.get_data.get_by_index(0, 1)
 puts result
+
+sljson = StudentListJSON.new('student_list.json')
+puts "#4 №2 вывод всех студентов:"
+sljson.read_list_of_students.each do |student|
+  puts student.fullname
+end
+puts "#4 №2 сортировка по фамилии :"
+sljson.sort.each do |element|
+  puts element
+end

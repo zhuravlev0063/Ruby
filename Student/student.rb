@@ -41,20 +41,13 @@ class Student<Person
   end 
  
   def to_h
-    {
-      'id' => self.id,
-      'surname' => self.surname,
-      'firstname' => self.firstname,
-      'lastname' => self.lastname,
-      'birthdate' => self.birthdate,
-      'phone_number' => self.phone_number,
-      'telegram' => self.telegram,
-      'email' => self.email,
-      'git' => self.git
-    }
+    { id: self.id, surname: self.surname, firstname: self.firstname, lastname: self.lastname, 
+    birthdate: self.birthdate, telegram: self.telegram, email: self.email, phone_number: self.phone_number, git: self.git }
   end
 
   private
+
+  attr_reader :number_phone, :email, :telegram
 
     def surname=(surname)
       if self.class.valid_name?(surname)

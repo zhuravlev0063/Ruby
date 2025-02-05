@@ -6,10 +6,10 @@ class Student<Person
   include Comparable
 
   attr_accessor :birthdate, :surname, :firstname, :lastname
-  attr_reader :phone_number, :email, :telegram
+  attr_reader :phone_number, :email, :telegram, :unique_indicator
 
   #конструктор класса
-  def initialize(id:nil,surname:,firstname:,lastname:,phone_number:nil,telegram:nil,email:nil,git:nil,birthdate: nil)
+  def initialize(id:nil,surname:,firstname:,lastname:,phone_number:nil,telegram:nil,email:nil,git:nil,birthdate: nil,, unique_indicator: :git)
     super(id: id, git: git,phone_number: phone_number, telegram: telegram, email: email)
     self.surname = surname
     self.firstname = firstname 
@@ -51,6 +51,8 @@ class Student<Person
   end
 
   private
+
+  attr_writer :unique_indicator
 
     def surname=(surname)
       if self.class.valid_name?(surname)

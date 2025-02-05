@@ -16,7 +16,7 @@ class Student_list_DB
     k = 1 if k < 1
     offset = (k - 1) * n
     result = client.exec_params(
-      "SELECT id, surname, name, second_name FROM students ORDER BY id LIMIT $1 OFFSET $2",
+      "SELECT id, surname, firstname, lastname FROM students ORDER BY id LIMIT $1 OFFSET $2",
       [n, offset]
     )
     if result.ntuples.zero?

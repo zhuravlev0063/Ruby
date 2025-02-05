@@ -24,7 +24,7 @@ dan= Student.new(
 igor= Student.new(
   id: "2",
   surname: "Софронов",
-  firstname:"Игорь",
+  firstname: "Игсымфаорь",
   lastname: "Дмитриевич",
   phone_number: "89182188064",
   telegram: "igor",

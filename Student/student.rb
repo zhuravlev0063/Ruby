@@ -6,7 +6,7 @@ class Student<Person
   include Comparable
 
   attr_accessor :birthdate, :surname, :firstname, :lastname
-  attr_reader :number_phone, :email, :telegram
+  attr_reader :phone_number, :email, :telegram
 
   #конструктор класса
   def initialize(id:nil,surname:,firstname:,lastname:,phone_number:nil,telegram:nil,email:nil,git:nil,birthdate: nil)
@@ -20,7 +20,7 @@ class Student<Person
   def self.from_hash(hash)
     self.new(**hash.transform_keys(&:to_sym))
   end
-  
+
   # Реализация сравнения студентов по дате рождения
   def <=>(other)
     if other.is_a?(Student)

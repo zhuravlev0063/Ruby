@@ -1,7 +1,7 @@
 ---
 - :id: '14'
   :surname: Софронов
-  :firstname:
+  :firstname: Игорь
   :lastname: Дмитриевич
   :birthdate: '08/08/2004'
   :telegram: sofr
@@ -10,7 +10,7 @@
   :git: gsgsh
 - :id:
   :surname: Журавлёв
-  :firstname:
+  :firstname: Данил
   :lastname: Юревич
   :birthdate: 14/03/2004
   :telegram:
@@ -19,7 +19,7 @@
   :git:
 - :id: '1'
   :surname: Суров
-  :firstname:
+  :firstname: Семён
   :lastname: Дмитриевич
   :birthdate: 14/03/2005
   :telegram:
@@ -28,16 +28,7 @@
   :git: sdfghjk
 - :id: '1'
   :surname: Журавлёв
-  :firstname:
-  :lastname: Дмитриевич
-  :birthdate: 14/03/2005
-  :telegram:
-  :email: example@mail.com
-  :phone_number: '89182188064'
-  :git: sdfghjk
-- :id: '1'
-  :surname: Журавлёв
-  :firstname:
+  :firstname: Даниил
   :lastname: Дмитриевич
   :birthdate: 14/03/2005
   :telegram:

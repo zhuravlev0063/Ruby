@@ -4,7 +4,7 @@ class Student_short < Person
 
   attr_reader :fullname, :contact
   
-  def self.create_from_student(student)
+  def self.about_student(student)
     new(id: student.id, git: student.git, fullname: student.fullname, contact: student.contact)
   end  
 
@@ -19,7 +19,7 @@ class Student_short < Person
   end  
   
   def to_s
-    "\nID: #{@id} \nFullname: #{@fullname} \nGit: #{@git} \nContact: #{@contact}"
+    "\nID: #{@id} \nFullname: #{@fullname} \nGit: #{@git} \nContact: #{@contact}" 
   end
 
   

@@ -5,6 +5,8 @@ require_relative './data_list_student_short'
 require_relative './student_list_json'
 require_relative './student_list_yaml'
 require_relative './file_handler'
+require_relative 'db/pg_client.rb'
+
 
 dan= Student.new(
   id: "1",
@@ -60,8 +62,15 @@ puts result
 
 sl = Student_list.new 
 sl.strategy = YAML_strategy.new('students_list.yaml')
-sl.insert_student(dan)
 
 temp = sl.get_k_n_student_short_list(1, 2)
 temp.select(1)
 puts temp.get_data.count_of_rows
+
+
+
+client = PG_client.new
+
+client.exec("select * from students;").each do |row|
+  puts row
+end

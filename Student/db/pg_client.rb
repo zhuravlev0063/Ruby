@@ -13,6 +13,11 @@ class PG_client
   def exec(query)
     client.exec(query)
   end
+
+  def exec_params(query, params =[])
+    client.exec_params(query, params)
+  end
+  
   private
   attr_accessor :client
 end

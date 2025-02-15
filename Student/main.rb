@@ -4,7 +4,7 @@ require_relative './student_short'
 require_relative './data_list_student_short'
 require_relative './student_list_json'
 require_relative './student_list_yaml'
-require_relative './file_handler'
+require_relative './student_list.rb'
 require_relative 'db/pg_client.rb'
 require_relative './student_list_db'
 
@@ -63,8 +63,7 @@ puts result
 
 
 puts "#4 strategy"
-sl = Student_list.new 
-sl.strategy = YAML_strategy.new('students_list.yaml')
+sl = Student_list.new(JSON_strategy.new('student_list.json'))
 
 temp = sl.get_k_n_student_short_list(1, 2)
 temp.select(1)

@@ -5,8 +5,8 @@ class Student_list
 
   attr_accessor :strategy, :students
 
-  def initialize
-    self.strategy = Strategy.new
+  def initialize(strategy)
+    self.strategy = strategy
     self.students = read_list_of_students
   end
 

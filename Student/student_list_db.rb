@@ -88,43 +88,4 @@ class Student_list_DB
     result[0]['count'].to_i
   end
 
-private
-
-  def unique_student?(student)
-    unigue_git?(student.git) && unique_phone?(student.phone) && unique_email?(student.email) && unique_telegram?(student.telegram)
-  end
-
-  def unigue_git?(git)
-    unique_attr?(:git, git)
-  end
-
-  def unique_phone?(phone)
-    unique_attr?(:phone, phone)
-  end
-
-  def unique_email?(email)
-    unique_attr?(:email, email)
-  end
-
-  def unique_telegram?(telegram)
-    unique_attr?(:telegram, telegram)
-  end
-
-  def unique_attr?(symbol, value)
-    tree = Binary_tree.new
-    self.strategy.read_list_of_students.each do |student|
-      student.unique_indicator = symbol
-      tree.add(student)
-    end
-
-    tree.iterator.each do |student|
-      if student.unique_indicator == value
-        return false
-      end
-    end
-    true
-    
-  end 
-
-
 end

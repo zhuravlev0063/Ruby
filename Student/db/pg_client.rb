@@ -4,17 +4,17 @@ class PG_client
   def exec(query)
     client.exec(query)
   end
-  def exec_params(queryparams =[])
+  def exec_params(query, params =[])
     client.exec_params(query, params)
   end
   
   def self.instance
     if @instance.nil?
-      new
+      @instance = new 
     else 
       @instance
     end
-  end
+  end 
   
   private
   attr_accessor :client
@@ -27,7 +27,7 @@ class PG_client
       user: 'postgres',
       password: '76717671',
       host: 'localhost',
-      port: 5432
+      port: 5432  
     )
   end
   

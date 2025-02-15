@@ -61,6 +61,8 @@ data_list.select(0)
 result =  data_list.get_data.get_by_index(0, 1)
 puts result
 
+
+puts "#4 strategy"
 sl = Student_list.new 
 sl.strategy = YAML_strategy.new('students_list.yaml')
 

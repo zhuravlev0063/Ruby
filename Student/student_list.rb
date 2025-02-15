@@ -20,14 +20,14 @@ class Student_list
 
 
   def get_by_id(id)
-    result = self.read_list_of_students.find do |student|
+    result = self.students.find do |student|
       student.id == id
     end
   end
 
   def get_k_n_student_short_list(k = 1, n = 2)
     k = 1 if k < 1 
-    student_list = self.read_list_of_students
+    student_list = self.students
     if student_list[k * n]
       student_short_list = student_list[((k-1) * n)...(k*n)].map do |student|
         Student_short.about_student(student)
@@ -39,41 +39,37 @@ class Student_list
   end
 
   def sort 
-    students_list = self.read_list_of_students.sort_by do |student|
+    students_list = self.students.sort_by do |student|
       student.fullname
     end
   end
 
   def insert_student(student)
-    students_list = self.read_list_of_students
+    students_list = self.students
     
     if (unique?(student))
       students_list.push(student)
     else
       raise ArgumentError, 'Student already exists'
     end
-
-    self.write_list_of_students(students_list)
   end
 
   def replace_by_id(student)
-    student_list = self.read_list_of_students.map do |object|
+    student_list = self.students.map do |object|
       if object.id == student.id
         object = student
       end
     end
-    self.write_list_of_students(student_list)
   end
 
   def delete_by_id(id)
-    student_list = self.read_list_of_students.delete_if do |student|
+    student_list = self.students.delete_if do |student|
       student.id == id
-    end
-    self.write_list_of_students(student_list)
+    end 
   end
   
   def get_student_short_count
-    students_list = self.read_list_of_students
+    students_list = self.students
     students_list.count
   end
 

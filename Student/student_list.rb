@@ -15,7 +15,7 @@ class Student_list
   end
 
   def write_list_of_students(students_list) 
-    self.strategy.write_list_of_students 
+    self.strategy.write_list_of_students(students_list)
   end
 
 

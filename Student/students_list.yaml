@@ -1,37 +1,28 @@
 ---
-- :id: '14'
-  :surname: Софронов
-  :firstname: Игорь
-  :lastname: Дмитриевич
-  :birthdate: '08/08/2004'
-  :telegram: sofr
-  :email: gsgsg@yandex.ru
-  :phone_number:
-  :git: gsgsh
-- :id:
+- :id: '11'
   :surname: Журавлёв
-  :firstname: Данил
-  :lastname: Юревич
-  :birthdate: 14/03/2004
+  :firstname:
+  :lastname: Владимирович
+  :birthdate: 14/03/2005
   :telegram:
   :email:
-  :phone_number: '88008363636'
-  :git:
-- :id: '1'
+  :phone_number:
+  :git: gsgsghs
+- :id: '22'
+  :surname: Софронов
+  :firstname:
+  :lastname: Александрович
+  :birthdate: '08/08/2004'
+  :telegram:
+  :email:
+  :phone_number:
+  :git: hshjsh
+- :id: '33'
   :surname: Суров
-  :firstname: Семён
+  :firstname:
   :lastname: Дмитриевич
-  :birthdate: 14/03/2005
+  :birthdate: 16/04/2004
   :telegram:
-  :email: example@mail.com
-  :phone_number: '89182188064'
-  :git: sdfghjk
-- :id: '1'
-  :surname: Журавлёв
-  :firstname: Даниил
-  :lastname: Дмитриевич
-  :birthdate: 14/03/2005
-  :telegram:
-  :email: example@mail.com
-  :phone_number: '89182188064'
-  :git: sdfghjk
+  :email:
+  :phone_number:
+  :git: ggkgkgk

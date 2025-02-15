@@ -16,7 +16,7 @@ class Student_list_DB
     Student.from_hash(result[0]) 
   end
 
-  def get_k_n_student_short_list(k = 1, n = 20)
+  def get_k_n_student_short_list(k = 1, n = 2)
     k = 1 if k < 1
     offset = (k - 1) * n
     result = client.exec_params(
@@ -27,7 +27,7 @@ class Student_list_DB
       raise IndexError, 'Index out of range'
     end
     student_short_list = result.map do |row|
-      Short_student.from_student(Student.from_hash(row))
+      Student_short.about_student(Student.from_hash(row))
     end
     Data_list_student_short.new(student_short_list)
   end

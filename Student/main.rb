@@ -63,7 +63,7 @@ puts result
 
 
 puts "#4 strategy"
-sl = Student_list.new(JSON_strategy.new('student_list.json'))
+sl = Student_list.new(JSON_strategy.new('C:\Users\zhura\code\Student\student_list.json'))
 
 temp = sl.get_k_n_student_short_list(1, 2)
 temp.select(1)
@@ -75,5 +75,4 @@ sldb = Student_list_DB.new
 sldb.client.exec("select * from students").each do |row|
   puts row
 end
-
 puts sldb.get_student_short_count

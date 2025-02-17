@@ -9,12 +9,9 @@ class PG_client
   end
   
   def self.instance
-    if @instance.nil?
-      @instance = new 
-    else 
-      @instance
-    end
-  end 
+    @instance ||= new
+  end
+  
   
   private
   attr_accessor :client

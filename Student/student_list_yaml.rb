@@ -5,6 +5,8 @@ require_relative 'student'
 require_relative 'strategy'
 
 class YAML_strategy < Strategy
+
+  attr_reader :path
   
   def initialize(path)
     self.path = path

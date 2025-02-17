@@ -63,6 +63,15 @@ class Student<Person
     end
   end
 
+
+  def ==(other)
+    number_phone == other.number_phone ||
+    telegram == other.telegram ||
+    email == other.email ||
+    git == other.git
+  end
+
+  
   def has_contact_and_git?
     has_contact? && has_git?
   end

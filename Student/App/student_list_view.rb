@@ -21,7 +21,7 @@ class StudentListView < FXMainWindow
     self.controller = Students_list_controller.new(self)
     self.filters = {}
     self.current_page = 1
-    self.items_per_page = 5
+    self.items_per_page = 10
     self.total_pages = 0
 
     main_frame = FXHorizontalFrame.new(self, LAYOUT_FILL)
@@ -58,6 +58,7 @@ class StudentListView < FXMainWindow
   # Заполнение таблицы
   def set_table_data(data_table)
     clear_table
+ 
     (0...data_table.count_of_columns).each do |col|
     (0...data_table.count_of_rows).each do |row|
      

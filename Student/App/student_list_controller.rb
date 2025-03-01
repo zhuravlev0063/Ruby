@@ -6,7 +6,7 @@ class Students_list_controller
   private attr_accessor :view, :student_list, :data_list 
   def initialize(view)
     self.view = view
-    self.student_list = Student_list.new(JSON_strategy.new('C:\Users\zhura\code\Student\student_list.json'))
+    self.student_list = Student_list.new(JSON_strategy.new('../student_list.json'))
     self.data_list = Data_list_student_short.new([])
     self.data_list.add_observer(self.view)
   end
@@ -38,8 +38,8 @@ def sort_table_by_column
 end
 
 def renew
-    self.student_list = Students_list.new('C:\Users\zhura\code\Student\student_list.json', JSON_strategy.new)
-    self.student_list.load_from_file
+    self.student_list = Student_list.new(JSON_strategy.new('../student_list.json'))
+    self.student_list.read_list_of_students
     self.refresh_data
 end
 end

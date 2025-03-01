@@ -72,6 +72,7 @@ class Data_list
     
     end
   end
+  
   def set_list(list)
     unless list.is_a?(Array)
       raise ArgumentError, 'List must be an array.'

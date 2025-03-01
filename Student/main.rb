@@ -63,9 +63,9 @@ puts result
 
 
 puts "#4 strategy"
-sl = Student_list.new(JSON_strategy.new('C:\Users\zhura\code\Student\student_list.json'))
+sl = Student_list.new(JSON_strategy.new('./student_list.json'))
 sl.read_list_of_students 
-sl.strategy=YAML_strategy.new('C:\Users\zhura\code\Student\students_list.yaml')
+sl.strategy=YAML_strategy.new('./students_list.yaml')
 sl.write_list_of_students
 
 
